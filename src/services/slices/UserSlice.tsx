@@ -25,24 +25,13 @@ const initialState: TStateUser = {
   error: null
 };
 
-export const getUser = createAsyncThunk('user/getUser', async () =>
-  getUserApi()
-);
+export const getUser = createAsyncThunk('user/getUser', getUserApi);
 
-export const loginUser = createAsyncThunk(
-  'user/login',
-  async (loginData: TLoginData) => loginUserApi(loginData)
-);
+export const loginUser = createAsyncThunk('user/login', loginUserApi);
 
-export const registerUser = createAsyncThunk(
-  'user/register',
-  async (user: TRegisterData) => registerUserApi(user)
-);
+export const registerUser = createAsyncThunk('user/register', registerUserApi);
 
-export const updateUser = createAsyncThunk(
-  'user/update',
-  async (user: TRegisterData) => updateUserApi(user)
-);
+export const updateUser = createAsyncThunk('user/update', updateUserApi);
 
 export const logoutUser = createAsyncThunk('user/logout', logoutApi);
 
