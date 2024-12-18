@@ -2,8 +2,7 @@ import { ProfileOrdersUI } from '@ui-pages';
 import { TOrder } from '@utils-types';
 import { FC, useEffect } from 'react';
 import { Preloader } from '@ui';
-import { useDispatch } from '@store';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from '@store';
 import {
   getFeedLoadingStatusSelector,
   getOrdersSelector,

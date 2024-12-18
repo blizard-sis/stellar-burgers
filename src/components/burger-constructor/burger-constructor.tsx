@@ -23,7 +23,10 @@ export const BurgerConstructor: FC = () => {
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
-    if (!isAuthorized && constructorItems.bun) navigate('/login');
+    if (!isAuthorized && constructorItems.bun) {
+      navigate('/login');
+      return;
+    }
     dispatch(setOrderRequest(true));
     const order = [
       constructorItems.bun?._id,
