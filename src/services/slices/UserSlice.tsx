@@ -4,8 +4,6 @@ import {
   loginUserApi,
   registerUserApi,
   logoutApi,
-  TLoginData,
-  TRegisterData,
   getUserApi,
   updateUserApi
 } from '@api';
