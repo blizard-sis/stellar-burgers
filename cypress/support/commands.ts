@@ -35,3 +35,9 @@
 //     }
 //   }
 // }
+Cypress.Commands.add('addIngredient', (type, name) => {
+  cy.get(`[data-cy=${type}_ingredients]`)
+    .contains('li', name)
+    .contains('button', 'Добавить')
+    .click();
+});

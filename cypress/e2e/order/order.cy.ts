@@ -7,6 +7,8 @@ import {
   TEXT_SAUCE_SPICY
 } from '../../support/constants';
 
+import '../../support/commands';
+
 describe('Order test', function () {
   this.beforeEach(function() {
     cy.intercept('GET', 'api/ingredients', {fixture: 'ingredients.json'});
@@ -28,15 +30,9 @@ describe('Order test', function () {
 
   // Добавление ингредиентов и создание заказа
   it('Create success order test', function() {
-    cy.get(SELECTOR_BUN_INGREDIENTS)
-      .contains('li', TEXT_BUN_KRATORNAYA)
-      .contains('button', 'Добавить').click();
-    cy.get('[data-cy=main_ingredients]')
-      .contains('li', TEXT_MAIN_PROTOMOLLUSK)
-      .contains('button', 'Добавить').click();
-    cy.get('[data-cy=souce_ingredients]')
-      .contains('li', TEXT_SAUCE_SPICY)
-      .contains('button', 'Добавить').click();
+    cy.addIngredient('bun', TEXT_BUN_KRATORNAYA);
+    cy.addIngredient('main', TEXT_MAIN_PROTOMOLLUSK);
+    cy.addIngredient('souce', TEXT_SAUCE_SPICY);
 
     cy.intercept('POST', '**/api/orders').as('createOrder');
     // Клик на кнопку заказа
