@@ -91,7 +91,17 @@ const config: JestConfigWithTsJest = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
-
+  moduleNameMapper: {
+    '^@pages(.*)$': '<rootDir>/src/pages$1',
+    '^@components(.*)$': '<rootDir>/src/components$1',
+    '^@ui(.*)$': '<rootDir>/src/components/ui$1',
+    '^@ui-pages(.*)$': '<rootDir>/src/components/ui/pages$1',
+    '^@utils-types(.*)$': '<rootDir>/src/utils/types$1',
+    '^@api(.*)$': '<rootDir>/src/utils/burger-api.ts$1',
+    '^@slices(.*)$': '<rootDir>/src/services/slices$1',
+    '^@selectors(.*)$': '<rootDir>/src/services/selectors$1',
+    '^@store(.*)$': '<rootDir>/src/services/store.tsx$1',
+  },
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
 
@@ -138,7 +148,7 @@ const config: JestConfigWithTsJest = {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
-
+  setupFilesAfterEnv: ['jest-localstorage-mock'],
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
 
@@ -147,6 +157,7 @@ const config: JestConfigWithTsJest = {
 
   // The test environment that will be used for testing
   // testEnvironment: "jest-environment-node",
+  "testEnvironment": "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
